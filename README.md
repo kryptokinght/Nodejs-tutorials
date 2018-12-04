@@ -54,3 +54,12 @@ When an npm package is installed locally, it is installed with the ^(carrot) sig
 * `npm outdated` : To see all the outdated packages and to what version they can be updated. Run this to see which packages are going to be updated to what version before running `npm update` .
 * `npm ls` : Gives the **whole dependency** tree of your project 
 * To install a package of a particular version like `lodash` of version `4.16.0`, use `npm i lodash@4.16.0`
+
+## Module
+
+* Module is a file that contains code. It is wrapped around with a function as depicted in this [wrapper.js](Module/wrapper.js). 
+* Thus we see that Node provides 5 different arguments to the wrapping function. 
+* The wrapping function also **returns** something. It returns `return module.exports` . 
+* Its always suggested to change `module.exports` rather than the alias `exports`.
+Because if we assign a new object to alias or assign a function to alias then
+the reference to which the alias points changes while the value of `module.exports` remains unaffected. And so module.exports doesn't pass anything.
