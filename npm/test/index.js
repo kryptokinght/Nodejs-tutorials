@@ -1,4 +1,4 @@
-const print = require('../frame-print');
+const print = require('kryptokinght-frame-print');
 
 print("Hello World");
 
