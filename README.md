@@ -37,3 +37,20 @@
         obj.func1(); //outputs obj
         obj.func2(); //either the global object or the windows object in case of browser
     ```
+
+## Steps to publish your npm package
+
+1. Create your package with an index.js file and `npm init` the package.
+2. `npm login`
+3. `npm publish`
+   
+   **NOTE** : Make sure you have an account on https://npmjs.com
+
+## Installing and Updating npm packages
+    
+When an npm package is installed locally, it is installed with the ^(carrot) sign in the **package.json** file. This means that when we run `npm update` the package will update to the latest *minor version*.
+
+* `npm show learnyounode versions` : To see all the versions of the particular package
+* `npm outdated` : To see all the outdated packages and to what version they can be updated. Run this to see which packages are going to be updated to what version before running `npm update` .
+* `npm ls` : Gives the **whole dependency** tree of your project 
+* To install a package of a particular version like `lodash` of version `4.16.0`, use `npm i lodash@4.16.0`
