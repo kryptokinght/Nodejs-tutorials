@@ -9,6 +9,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "kryptokinght-frame-print": "^1.0.0",
     "learnyounode": "^3.5.10"
   }
 }
