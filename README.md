@@ -60,6 +60,7 @@ When an npm package is installed locally, it is installed with the ^(carrot) sig
 * Module is a file that contains code. It is wrapped around with a function as depicted in this [wrapper.js](Module/wrapper.js). 
 * Thus we see that Node provides 5 different arguments to the wrapping function. 
 * The wrapping function also **returns** something. It returns `return module.exports` . 
-* Its always suggested to change `module.exports` rather than the alias `exports`.
-Because if we assign a new object to alias or assign a function to alias then
+* Its always suggested to change `module.exports` rather than the alias `exports`. Because if we assign a new object to alias or assign a function to alias then
 the reference to which the alias points changes while the value of `module.exports` remains unaffected. And so module.exports doesn't pass anything.
+* **Global Object in Node** : This file [global.js](Module/global.js) shows the global object by printing it. We see that setTimeout, setImmediate ... are properties of `global` object. This means setTimeout is same as `global.setTimeout` . 
+
