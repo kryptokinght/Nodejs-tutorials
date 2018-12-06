@@ -64,3 +64,8 @@ When an npm package is installed locally, it is installed with the ^(carrot) sig
 the reference to which the alias points changes while the value of `module.exports` remains unaffected. And so module.exports doesn't pass anything.
 * **Global Object in Node** : This file [global.js](Module/global.js) shows the global object by printing it. We see that setTimeout, setImmediate ... are properties of `global` object. This means setTimeout is same as `global.setTimeout` . 
 
+## Debugging Node applications
+* Run your program using the following command : `node --inspect-brk filename.js`
+* Open **chrome browser** and type: `chrome://inspect`
+* Your program will be shown in the page. Click on **inspect** to open the **Chrome Debugger** and happy debugging. 
+
