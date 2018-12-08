@@ -3,7 +3,7 @@
 ### Common Commands:
 * `npm install -h` : Gives help info about the `install` command
 * `npm help install` : Same as above, but with more details
-* `npm help-search keyword` : Gives a list of all the comamnds related with the keyowrd, for example the commands  related to the keyword 'remove'. Try `npm help-search remove` .
+* `npm help-search <keyword>` : Gives a list of all the comamnds related with the keyowrd, for example the commands  related to the keyword 'remove'. Try `npm help-search remove` .
 * `npm set inti-author-name 'Minanshu Singh'` : Set it common for all package.json
 * `npm set inti-license 'MIT '` : Set it common for all package.json
 * `git config delete inti-author-name` : delete the value set by the above command
@@ -24,4 +24,11 @@
 * `npm underscore@1.8.0 --save --save-exact` : Install a specific version of the package and do not add the ^ in package.json, which means later the package will not be updated, only exact version required.
 * `^` : latest (minor or patch) version of that major release. Eg: `^1.3.0` gives `1.8.5` if 1.8.5 is the latest in 1.x.x releases
 * `~` : latest patch version of that minor release. Eg: `~1.3.0` gives `1.3.9` if 1.3.9 is latest in 1.3.x releases
-* 
+* `npm prune` : prunes out extraneous packages, those that are not mentioned in package.json
+* `npm prune --production` : Used when deploying file to production, removes all dev dependencies
+* `npm i npm@latest -g` : Install the latest version of npm(updating npm)
+* `npm repo <package_name>` : Opens up the package github repo in your browser
+* `npm version path` : increments your patch version (1.2.x) and automatically amkes a commit
+* `npm version major` : increments your major version (x.0.0) and automatically makes a commit  
+* `npm version minor` : increments your minor version (1.x.0) and automatically makes a commit
+* [**NOTE** : After updating the tag using npm, you have to perform the following two commands to first push your tag to your github repo and second to update your file changes `git oush --tags`, `git push`]   
