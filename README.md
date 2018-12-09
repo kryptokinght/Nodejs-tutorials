@@ -88,12 +88,12 @@ When an npm package is installed locally, it is installed by default with the ^(
 * To install a package of a particular version like `lodash` of version `4.16.0`, use `npm i lodash@4.16.0`
 
 ## Module
+In NodeJS, all files are treated as a **module**. It is wrapped around with a function as depicted in this example [wrapper.js](Module/wrapper.js) file.<br/> 
+Node provides 5 different arguments to the wrapping function `function (exports, require, module, __filename, __dirname)`<br/>  
+The wrapping function returns `module.exports`. Its always suggested to change `module.exports` rather than its alias `exports`. Any change made to the reference of alias doesn't affect `module.exports`. <br/>
+For example if we change `exports` by assigining a new object to it `exports = {a: 1}` then `module.exports` remains unaffected. <br/>
 
-* Module is a file that contains code. It is wrapped around with a function as depicted in this example [wrapper.js](Module/wrapper.js) file. 
-* Node provides 5 different arguments to the wrapping function `function (exports, require, module, __filename, __dirname)`  
-* The wrapping function returns `module.exports`.  
-* Its always suggested to change `module.exports` rather than its alias `exports`. Any change made to the reference of alias doesn't affect `module.exports`. For example if we change `exports` by assigining a new object to it `exports = {a: 1}` then `module.exports` remains unaffected.
-* **Global Object in Node** : This example file [global.js](Module/global.js) shows the global object by printing it to the console. The functions setTimeout, setImmediate ... are properties of `global` object. This means that using setTimeout is same as using `global.setTimeout` . 
+**Global Object in Node** : This example file [global.js](Module/global.js) shows the global object by printing it to the console. The functions setTimeout, setImmediate ... are properties of `global` object. This means that using setTimeout is same as using `global.setTimeout` . 
 
 ## Buffer
 Buffer is a low level data structure that stores sequence of binary data. Buffers are useful when we have to read an image, audio, video, compressed, or any other file from a stream. The bytes from these kind of files are stored inside the Buffer data structure.<br/>
