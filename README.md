@@ -10,11 +10,11 @@ V8's feature group can be divided into 3 types :
 
 `node --v8-options` : to see all the v8 options<br/>
 Node has an API which we can use via Javascript to interact with the OS, network, timers, filesystem and others.<br/>
-Node itself has some [dependencies](https://nodejs.org/en/docs/meta/topics/dependencies/) : 
+Node itself has some [dependencies][3] : 
 * V8
-* [libuv](https://github.com/libuv/libuv) (event loop)
-* [http-parser](https://github.com/nodejs/http-parser) - small C library for parsing HTTP messages
-* [c-ares](https://github.com/c-ares/c-ares) - asynchronous DNS queries
+* [libuv][4] - event loop
+* [http-parser][5] - small C library for parsing HTTP messages
+* [c-ares][6] - asynchronous DNS queries
 * OpenSSL - used in the `tls` and `crypto` modules
 * zlib - compression and decompression
 
@@ -59,7 +59,7 @@ The Node REPL commands are:
         arr.push(30); //legal
         arr = []; //illegal
     ```
-  In order to implement immutability for objects, *Javascript* offers `Object.freeze()` It only freezes the first level of object. Another way to work with immutable objects is the [immutable.js](https://facebook.github.io/immutable-js/) library.
+  In order to implement immutability for objects, *Javascript* offers `Object.freeze()` It only freezes the first level of object. Another way to work with immutable objects is the [immutable.js][2] library.
 * `function() {}` **VS** `() => {}` : The `this` keyword in case of function() is binded to the caller object, while for arrow function the this keyword is same as the this keyword in function scope when that function was defined. Eg:
     ```javascript
         const obj = {
@@ -76,7 +76,7 @@ The Node REPL commands are:
 2. `npm login`
 3. `npm publish`
    
-   **NOTE** : Make sure you have an account at https://npmjs.com
+   **NOTE** : Make sure you have an account at [npmjs][7].
 
 ## Installing and Updating npm packages
     
@@ -95,8 +95,29 @@ When an npm package is installed locally, it is installed by default with the ^(
 * Its always suggested to change `module.exports` rather than its alias `exports`. Any change made to the reference of alias doesn't affect `module.exports`. For example if we change `exports` by assigining a new object to it `exports = {a: 1}` then `module.exports` remains unaffected.
 * **Global Object in Node** : This example file [global.js](Module/global.js) shows the global object by printing it to the console. The functions setTimeout, setImmediate ... are properties of `global` object. This means that using setTimeout is same as using `global.setTimeout` . 
 
+## Buffer
+Buffer is a low level data structure that stores sequence of binary data. Buffers are useful when we have to read an image, audio, video, compressed, or any other file from a stream. The bytes from these kind of files are stored inside the Buffer data structure.<br/>
+There are [3 ways][1] of allocating Buffer:
+1. `Buffer.alloc(<size_in_integer>)` - Allocates buffer of fixed size and also fills/initializes it.  
+2. `Buffer.allocUnsafe(<size_in_integer>)` - Allocates buffer of fixed size but doesn't fill it. However it can be filled using `Buffer.allocUnsafe(100).fill()`
+3. `Buffer.from(<object>)` - creates a new `Buffer` from `Array`, `ArrayBuffer`, `String`, `Buffer`.
+
+When Decoding Buffer strings it is recommended to use the `StringDecoder module`. It handles incomplete multibyte characters better than other modules. An [example](Buffer/string_decoder.js) to show its use.
 ## Debugging Node applications
 * Run your program using the following command : `node --inspect-brk filename.js`
 * Open **chrome browser** and type: `chrome://inspect`
 * Underneath the REMOTE TARGET header is displayed a list of files opened in debug mode. Click on **inspect** to open the **Chrome Debugger** window and start debugging. 
 
+
+
+
+
+
+[1]: https://nodejs.org/api/buffer.html#buffer_buffer_from_buffer_alloc_and_buffer_allocunsafe
+[2]: https://facebook.github.io/immutable-js/
+[3]: https://nodejs.org/en/docs/meta/topics/dependencies/
+[4]: https://github.com/libuv/libuv
+[5]: https://github.com/nodejs/http-parser
+[6]: https://github.com/c-ares/c-ares
+[7]: https://npmjs.com
+[8]: 
