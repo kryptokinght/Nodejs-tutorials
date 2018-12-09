@@ -5,8 +5,9 @@
 console.log("The process.argv array contains: ");
 console.log(process.argv);
 
-// Run as : node argv_example.js hello minmin
+
 /*
+Run as : node argv_example.js hello minmin
 OUTPUT:
 [ '/usr/local/bin/node',
   '/home/kryptoknight/Music/open_source/nodejs-tut/process_object/argv_example.js',
