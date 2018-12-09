@@ -93,7 +93,9 @@ Node provides 5 different arguments to the wrapping function `function (exports,
 The wrapping function returns `module.exports`. Its always suggested to change `module.exports` rather than its alias `exports`. Any change made to the reference of alias doesn't affect `module.exports`. <br/>
 For example if we change `exports` by assigining a new object to it `exports = {a: 1}` then `module.exports` remains unaffected. <br/>
 
-**Global Object in Node** : This example file [global.js](Module/global.js) shows the global object by printing it to the console. The functions setTimeout, setImmediate ... are properties of `global` object. This means that using setTimeout is same as using `global.setTimeout` . 
+**Global Object in Node** : This example file [global.js](Module/global.js) shows the global object by printing it to the console. The functions setTimeout, setImmediate ... are properties of `global` object. This means that using setTimeout is same as using `global.setTimeout` . <br/>
+
+`require() ` is a function that takes the module name or path and returns the exports object.
 
 ## Buffer
 Buffer is a low level data structure that stores sequence of binary data. Buffers are useful when we have to read an image, audio, video, compressed, or any other file from a stream. The bytes from these kind of files are stored inside the Buffer data structure.<br/>
