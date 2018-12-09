@@ -1,4 +1,34 @@
 # Notes on Node
+Node runs on a virtual machine provided, at the present, by V8 but in the future Node will be able to run both on V8 and ChakraCore.<br/>
+Node uses the V8 engine by default to execute Javascript code.
+`node -p 'process.versions.v8'`<br/>
+Node uses V8 via V8's C++ API.
+V8's feature group can be divided into 3 types :
+* Shipping - can be used directly
+* Staged - use with the `--harmony` flag
+* in progress - Lookup the flags using `node --v8-options | grep 'in progress'`
+
+`node --v8-options` : to see all the v8 options<br/>
+Node has an API which we can use via Javascript to interact with the OS, network, timers, filesystem and others.<br/>
+Node itself has some [dependencies](https://nodejs.org/en/docs/meta/topics/dependencies/) : 
+* V8
+* [libuv](https://github.com/libuv/libuv) (event loop)
+* [http-parser](https://github.com/nodejs/http-parser) - small C library for parsing HTTP messages
+* [c-ares](https://github.com/c-ares/c-ares) - asynchronous DNS queries
+* OpenSSL - used in the `tls` and `crypto` modules
+* zlib - compression and decompression
+
+### Node REPL(read-eval-print-loop)
+The Node REPL commands are:
+* `.help` 
+* `.break` 
+* `.save` 
+* `.exit` 
+* `.load` 
+* `.editor` 
+* `.clear` 
+
+
 
 ### Evironment variable in node
 * **NODE_DEBUG** : using core modules to print debug information 
