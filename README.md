@@ -18,6 +18,9 @@ Node itself has some [dependencies][3] :
 * OpenSSL - used in the `tls` and `crypto` modules
 * zlib - compression and decompression
 
+### Concurrency model and Event loop
+Single threaded frameworks like Node uses event loop and callbaacks to perform slow I/O operations.
+
 ### Node REPL(read-eval-print-loop)
 The Node REPL commands are:
 * `.help` 
