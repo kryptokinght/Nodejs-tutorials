@@ -1,7 +1,8 @@
 # Notes on Node
 
 Node runs on a virtual machine provided, at the present, by V8 but in the future Node will be able to run both on V8 and ChakraCore.<br/>
-Node uses the V8 engine by default to execute Javascript code.
+Node uses the V8 engine by default to execute Javascript code. The V8 is just the *call stack* and the *heap memory* while the rest of the features like *event queue, event loop, Node API* are not present in the V* and provided by the other dependencies of Node.<br/>
+The **event loop** is provided by the `libuv` dependency. 
 `node -p 'process.versions.v8'`<br/>
 Node uses V8 via V8's C++ API.
 V8's feature group can be divided into 3 types :
@@ -34,6 +35,11 @@ Here is an [example](examples/outer-environment.js) to show the concept of outer
 Every function in JS has a **reference to outer environment**.  <br/>
 **Scope chain** - A function resolves a variable by moving down the scope chain unless it finds it. Here scope chain is a series of outer environments one below the other as if like a downwards staircase.   
 
+### Concurrency model and Event loop
+Single threaded frameworks like Node uses event loop and callbaacks to perform slow I/O operations.
+* [This video][8] here explains perfectly *Concurrency model and Event Loop* in JS running on **Browsers**.
+* [Furthur Adventures of the Event Loop - Erin Zimmer - JSConf EU 2018][9] : Explains the event loop in case of **browsers**, **node** and **webworkers**.
+* [Jake Archibald - In the loop][10] : A more example oriented way of explaning event loop. 
 
 ### Node REPL(read-eval-print-loop)
 
@@ -142,5 +148,7 @@ When Decoding Buffer strings it is recommended to use the `StringDecoder module`
 [5]: https://github.com/nodejs/http-parser
 [6]: https://github.com/c-ares/c-ares
 [7]: https://npmjs.com
+[8]: https://www.youtube.com/watch?v=8aGhZQkoFbQ
+[9]: https://www.youtube.com/watch?v=u1kqx6AenYw
+[10]: https://www.youtube.com/watch?v=cCOL7MC4Pl0
 
-[8]:
