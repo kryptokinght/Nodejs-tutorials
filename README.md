@@ -41,7 +41,12 @@ Single threaded frameworks like Node uses event loop and callbaacks to perform s
 * [Furthur Adventures of the Event Loop - Erin Zimmer - JSConf EU 2018][9] : Explains the event loop in case of **browsers**, **node** and **webworkers**.
 * [Jake Archibald - In the loop][10] : A more example oriented way of explaning event loop. 
 
-### Node REPL(read-eval-print-loop)
+### Evironment variable in node
+
+- **NODE_DEBUG** : using core modules to print debug information
+- **NODE_PATH** : To overwrite the default path that Node uses to search for modules
+
+## Node REPL(read-eval-print-loop)
 
 The Node REPL commands are:
 
@@ -51,14 +56,45 @@ The Node REPL commands are:
 - `.exit`
 - `.load`
 - `.editor`
-- `.clear`
+- `.clear` (alias for `.break`)
 
-### Evironment variable in node
+## Node API
 
-- **NODE_DEBUG** : using core modules to print debug information
-- **NODE_PATH** : To overwrite the default path that Node uses to search for modules
+* ### Module
 
-### Modern Javascript
+  In NodeJS, all files are treated as a **module**. It is wrapped around with a function as depicted in this example [wrapper.js](Module/wrapper.js) file.<br/>
+  Node provides 5 different arguments to the wrapping function `function (exports, require, module, __filename, __dirname)`<br/>  
+  The wrapping function returns `module.exports`. Its always suggested to change `module.exports` rather than its alias `exports`. Any change made to the reference of alias doesn't affect `module.exports`. <br/>
+  For example if we change `exports` by assigining a new object to it `exports = {a: 1}` then `module.exports` remains unaffected. <br/>
+
+* ### Buffer
+
+  Buffer is a low level data structure that stores sequence of binary data. Buffers are useful when we have to read an image, audio, video, compressed, or any other file from a stream. The bytes from these kind of files are stored inside the Buffer data structure.<br/>
+  There are [3 ways][1] of allocating Buffer:
+
+  1. `Buffer.alloc(<size_in_integer>)` - Allocates buffer of fixed size and also fills/initializes it.
+  2. `Buffer.allocUnsafe(<size_in_integer>)` - Allocates buffer of fixed size but doesn't fill it. However it can be filled using `Buffer.allocUnsafe(100).fill()`
+  3. `Buffer.from(<object>)` - creates a new `Buffer` from `Array`, `ArrayBuffer`, `String`, `Buffer`.
+
+  When Decoding Buffer strings it is recommended to use the `StringDecoder module`. It handles incomplete multibyte characters better than other modules. An [example](Buffer/string_decoder.js) to show its use.
+
+* ### Global Object in Node 
+  This example file [global.js](Node_API/Module/global.js) shows the global object by printing it to the console. The functions setTimeout, setImmediate ... are properties of `global` object. This means that using setTimeout is same as using `global.setTimeout` . <br/>
+
+  `require()` is a function that takes the module name or path and returns the exports object.
+
+
+
+## Debugging Node applications
+
+- Run your program using the following command : `node --inspect-brk filename.js`
+- Open **chrome browser** and type: `chrome://inspect`
+- Underneath the REMOTE TARGET header is displayed a list of files opened in debug mode. Click on **inspect** to open the **Chrome Debugger** window and start debugging.
+
+## Modern Javascript
+
+### Callbacks doesn't mean asynchronous nature
+If a callback is passed to an synchronous function then only the callback is said to be async. Otherwise callbacks passed to normal functions as arguments are synchronous. Here is an [example](/Node_API/fs/sync_callback.js) of a **synchronous callback**. The same example can be done asynchronously using *promises* [here](promises/readFileArray.js). Most Javascript packages nowadays take the approach of introducing both callback and promises to their modules. [Here](promises/readFileArrayCb.js) is the previous example using this method.
 
 - `let` : a variable declared useing let is local to the scope in which the variable was declared and cannot be accessed outside of the scope.
   Eg:
@@ -96,7 +132,9 @@ The Node REPL commands are:
   obj.func2(); //either the global object or the windows object in case of browser
   ```
 
-## Steps to publish your npm package
+## npm (Node Package Manager)
+
+### Steps to publish your npm package
 
 1. Create your package with an index.js file and `npm init` the package.
 2. `npm login`
@@ -104,7 +142,7 @@ The Node REPL commands are:
 
    **NOTE** : Make sure you have an account at [npmjs][7].
 
-## Installing and Updating npm packages
+### Installing and Updating npm packages
 
 When an npm package is installed locally, it is installed by default with the ^(carrot) sign in the **package.json** file. This means running `npm update <package_name>` will update the package to its latest _minor version_(1.x.0).
 
@@ -113,33 +151,7 @@ When an npm package is installed locally, it is installed by default with the ^(
 - `npm ls` : Gives the **whole dependency** tree of your project
 - To install a package of a particular version like `lodash` of version `4.16.0`, use `npm i lodash@4.16.0`
 
-## Module
 
-In NodeJS, all files are treated as a **module**. It is wrapped around with a function as depicted in this example [wrapper.js](Module/wrapper.js) file.<br/>
-Node provides 5 different arguments to the wrapping function `function (exports, require, module, __filename, __dirname)`<br/>  
-The wrapping function returns `module.exports`. Its always suggested to change `module.exports` rather than its alias `exports`. Any change made to the reference of alias doesn't affect `module.exports`. <br/>
-For example if we change `exports` by assigining a new object to it `exports = {a: 1}` then `module.exports` remains unaffected. <br/>
-
-**Global Object in Node** : This example file [global.js](Module/global.js) shows the global object by printing it to the console. The functions setTimeout, setImmediate ... are properties of `global` object. This means that using setTimeout is same as using `global.setTimeout` . <br/>
-
-`require()` is a function that takes the module name or path and returns the exports object.
-
-## Buffer
-
-Buffer is a low level data structure that stores sequence of binary data. Buffers are useful when we have to read an image, audio, video, compressed, or any other file from a stream. The bytes from these kind of files are stored inside the Buffer data structure.<br/>
-There are [3 ways][1] of allocating Buffer:
-
-1. `Buffer.alloc(<size_in_integer>)` - Allocates buffer of fixed size and also fills/initializes it.
-2. `Buffer.allocUnsafe(<size_in_integer>)` - Allocates buffer of fixed size but doesn't fill it. However it can be filled using `Buffer.allocUnsafe(100).fill()`
-3. `Buffer.from(<object>)` - creates a new `Buffer` from `Array`, `ArrayBuffer`, `String`, `Buffer`.
-
-When Decoding Buffer strings it is recommended to use the `StringDecoder module`. It handles incomplete multibyte characters better than other modules. An [example](Buffer/string_decoder.js) to show its use.
-
-## Debugging Node applications
-
-- Run your program using the following command : `node --inspect-brk filename.js`
-- Open **chrome browser** and type: `chrome://inspect`
-- Underneath the REMOTE TARGET header is displayed a list of files opened in debug mode. Click on **inspect** to open the **Chrome Debugger** window and start debugging.
 
 [1]: https://nodejs.org/api/buffer.html#buffer_buffer_from_buffer_alloc_and_buffer_allocunsafe
 [2]: https://facebook.github.io/immutable-js/
