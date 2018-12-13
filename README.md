@@ -78,6 +78,9 @@ The Node REPL commands are:
 
   When Decoding Buffer strings it is recommended to use the `StringDecoder module`. It handles incomplete multibyte characters better than other modules. An [example](Buffer/string_decoder.js) to show its use.
 
+* ### Streams
+    This [article][11] gives a good explanation of the streams object in the NodeJs API. 
+
 * ### Global Object in Node 
   This example file [global.js](Node_API/Module/global.js) shows the global object by printing it to the console. The functions setTimeout, setImmediate ... are properties of `global` object. This means that using setTimeout is same as using `global.setTimeout` . <br/>
 
@@ -163,4 +166,6 @@ When an npm package is installed locally, it is installed by default with the ^(
 [8]: https://www.youtube.com/watch?v=8aGhZQkoFbQ
 [9]: https://www.youtube.com/watch?v=u1kqx6AenYw
 [10]: https://www.youtube.com/watch?v=cCOL7MC4Pl0
+[11]: https://medium.freecodecamp.org/node-js-streams-everything-you-need-to-know-c9141306be93
+
 
