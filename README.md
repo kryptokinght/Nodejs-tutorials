@@ -135,27 +135,6 @@ If a callback is passed to an synchronous function then only the callback is sai
   obj.func2(); //either the global object or the windows object in case of browser
   ```
 
-## npm (Node Package Manager)
-
-### Steps to publish your npm package
-
-1. Create your package with an index.js file and `npm init` the package.
-2. `npm login`
-3. `npm publish`
-
-   **NOTE** : Make sure you have an account at [npmjs][7].
-
-### Installing and Updating npm packages
-
-When an npm package is installed locally, it is installed by default with the ^(carrot) sign in the **package.json** file. This means running `npm update <package_name>` will update the package to its latest _minor version_(1.x.0).
-
-- `npm show learnyounode versions` : To see all the versions of the particular package
-- `npm outdated` : To see all the outdated packages and to what version they can be updated. Run this to see which packages are going to be updated to what version before running `npm update` .
-- `npm ls` : Gives the **whole dependency** tree of your project
-- To install a package of a particular version like `lodash` of version `4.16.0`, use `npm i lodash@4.16.0`
-
-
-
 [1]: https://nodejs.org/api/buffer.html#buffer_buffer_from_buffer_alloc_and_buffer_allocunsafe
 [2]: https://facebook.github.io/immutable-js/
 [3]: https://nodejs.org/en/docs/meta/topics/dependencies/
