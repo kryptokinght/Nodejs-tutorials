@@ -1,5 +1,7 @@
 # Notes on Node
 
+[Ryan Dahl - First Node.js presentation at JSConf 2009][12] - *This is the first ever introdution of Node.js and will help you understand the reason behind the beginning of node.*
+
 Node runs on a virtual machine provided, at the present, by V8 but in the future Node will be able to run both on V8 and ChakraCore.<br/>
 Node uses the V8 engine by default to execute Javascript code. The V8 is just the *call stack* and the *heap memory* while the rest of the features like *event queue, event loop, Node API* are not present in the V8 but provided by other dependencies of Node.<br/>
 For example, **event loop** is provided by the `libuv` dependency. 
@@ -146,5 +148,5 @@ If a callback is passed to an synchronous function then only the callback is sai
 [9]: https://www.youtube.com/watch?v=u1kqx6AenYw
 [10]: https://www.youtube.com/watch?v=cCOL7MC4Pl0
 [11]: https://medium.freecodecamp.org/node-js-streams-everything-you-need-to-know-c9141306be93
-
+[12]: https://www.youtube.com/watch?v=ztspvPYybIY
 
