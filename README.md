@@ -1,9 +1,9 @@
 # Notes on Node
 
 Node runs on a virtual machine provided, at the present, by V8 but in the future Node will be able to run both on V8 and ChakraCore.<br/>
-Node uses the V8 engine by default to execute Javascript code. The V8 is just the *call stack* and the *heap memory* while the rest of the features like *event queue, event loop, Node API* are not present in the V* and provided by the other dependencies of Node.<br/>
-The **event loop** is provided by the `libuv` dependency. 
-`node -p 'process.versions.v8'`<br/>
+Node uses the V8 engine by default to execute Javascript code. The V8 is just the *call stack* and the *heap memory* while the rest of the features like *event queue, event loop, Node API* are not present in the V8 but provided by other dependencies of Node.<br/>
+For example, **event loop** is provided by the `libuv` dependency. 
+`node -p 'process.versions.v8'` to see the version of the V8 dependency your Node is using.<br/>
 Node uses V8 via V8's C++ API.
 V8's feature group can be divided into 3 types :
 
@@ -12,8 +12,8 @@ V8's feature group can be divided into 3 types :
 - in progress - Lookup the flags using `node --v8-options | grep 'in progress'`
 
 `node --v8-options` : to see all the v8 options<br/>
-Node has an API which we can use via Javascript to interact with the OS, network, timers, filesystem and others.<br/>
-Node itself has some [dependencies][3] :
+Node provides an API which can be used via Javascript to interact with the OS, network, timers, filesystem and others.<br/>
+This API is provided by Node with the help of some [dependencies][3] like:
 
 - V8
 - [libuv][4] - event loop
@@ -24,7 +24,7 @@ Node itself has some [dependencies][3] :
 
 Javascript execution takes place in 2 phases:
 
-1. **Creation phase** - This is the first phase of creating the **Javascript execution context**. The parser goes through the code and sets up memory for functions and variables. The functions are initialized with their definition but the variables are initialized with `undefined`. Due to this functions can be defined anywhere in the program. This is called **`hoisting`**. Though it is recommended to define functions at the top of the program. An [example](hoisting/example.js) of `hoisting`. Also the **global object**, `this` and Outer Environment is created durin this phase.
+1. **Creation phase** - This is the first phase of creating the **Javascript execution context**. The parser goes through the code and sets up memory for functions and variables. The functions are initialized with their definition but the variables are initialized with `undefined`. Due to this functions can be defined anywhere in the program. This is called **`hoisting`**. Though it is recommended to define functions at the top of the program. An [example](hoisting/example.js) of `hoisting`. Also the **global object**, `this` and Outer Environment is created during this phase.
 2. **Execution phase** - The execution of the Program takes place line by line. 
 
 Whenever a function is executed its **Execution context** is created and stored on the stack. This *execution context* consists of the *creation phase* where the variables and functions are stored in memory, and the *execution phase* where the lines are execute done by one. Once the function finishes exeution, its execution context is popped off from the stack. All programs initially have a **Global Execution Context** which contains the code of the whole program. 
