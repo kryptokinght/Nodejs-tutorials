@@ -48,6 +48,22 @@ Single threaded frameworks like Node uses event loop and callbaacks to perform s
 - **NODE_DEBUG** : using core modules to print debug information
 - **NODE_PATH** : To overwrite the default path that Node uses to search for modules
 
+### How does require() really works?
+What happens when you perform `const abc = require('abc');`.
+First of all, loading a module doesn't only mean loading, it means loading, compiling and caching.
+<br/>
+Modules in Nodejs, or any file that ends with a .js extension, is handled by a very powerful core moduel of node called **`module.js`** which handles the loading, caching and compiling of the node modules.
+<br/>
+`module.js` has two main roles:
+1. Instantiate all files with this base module - `module.js`. This is why we can attach properties to `module.exports` and return them.
+2. Handle the loading mechanism of modules.
+   
+  `require()` is an 
+
+<br/>
+To know more about require() in details, check out this blog: <br/>
+http://fredkschott.com/post/2014/06/require-and-the-module-system/
+
 ## Node REPL(read-eval-print-loop)
 
 The Node REPL commands are:
@@ -64,8 +80,8 @@ The Node REPL commands are:
 
 * ### Module
 
-  In NodeJS, all files are treated as a **module**. It is wrapped around with a function as depicted in this example [wrapper.js](Module/wrapper.js) file.<br/>
-  Node provides 5 different arguments to the wrapping function `function (exports, require, module, __filename, __dirname)`<br/>  
+  In NodeJS, all files are treated as a **module**. It is wrapped around with a function as depicted in this example [wrapper.js](Node_API/require/wrapper.js) file.<br/>
+  Node provides 5 different arguments to the wrapping function `(function (exports, require, module, __filename, __dirname) {\n});`<br/>  
   The wrapping function returns `module.exports`. Its always suggested to change `module.exports` rather than its alias `exports`. Any change made to the reference of alias doesn't affect `module.exports`. <br/>
   For example if we change `exports` by assigining a new object to it `exports = {a: 1}` then `module.exports` remains unaffected. <br/>
 
